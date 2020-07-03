@@ -37,8 +37,8 @@ if __name__=="__main__":
     # before = r"C:\Users\Ethen\Desktop\6+3 100\Baseline\06241900-30\1.txt"
     # after = r"C:\Users\Ethen\Desktop\6+3 100\Baseline\06241900-30\2.txt"
 
-    before=r"C:\Users\Ethen\Desktop\6+3 100\1.txt"
-    after = r"C:\Users\Ethen\Desktop\6+3 100\2.txt"
+    before=r"C:\Users\USTC\Desktop\6+3 100\1.txt"
+    after = r"C:\Users\USTC\Desktop\6+3 100\2.txt"
 
     # before = r"C:\Users\Ethen\Desktop\6+3 100\SlectiveEC\06241730-30\1.txt"
     # after = r"C:\Users\Ethen\Desktop\6+3 100\SlectiveEC\06241730-30\2.txt"

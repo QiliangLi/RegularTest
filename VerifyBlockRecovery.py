@@ -189,6 +189,7 @@ def verifyDestMapper(file,nodeNum):
             batchSize=nodeNum-1
             while(batchSize>0):
                 line = f.readline()
+                # print(line)
                 id=re.search(r"\d+", line).group(0)
                 if id not in destCounter:
                     destCounter[id]=0
@@ -202,7 +203,7 @@ def verifyDestMapper(file,nodeNum):
 
 
 def getTasksSizeBeforeTimeout(file):
-    f = open(logFile)  # 返回一个文件对象
+    f = open(file)  # 返回一个文件对象
     line = f.readline()  # 调用文件的 readline()方法
     flag=True
     beforeTimeoutCounter=0
@@ -222,12 +223,22 @@ def getTasksSizeBeforeTimeout(file):
     print("timeoutCounter:",timeoutCounter)
 
 
+def getComputeTime(file):
+    f = open(file)  # 返回一个文件对象
+    line = f.readline()  # 调用文件的 readline()方法
+    while line:
+        if "Compute time: " in line or "Compute time include sleep: " in line:
+            print(line)
+
+        line = f.readline()
+
+
 if __name__=="__main__":
     # outFile=r"C:\Users\Ethen\Desktop\NotIntegerBatch\logs\hadoop-hadoop-namenode-node1.out"
     # logFile=r"C:\Users\Ethen\Desktop\NotIntegerBatch\allLogs.txt"
 
-    outFile = r"C:\Users\Ethen\Desktop\6+3 100\hadoop-hadoop-namenode-node1.out"
-    logFile = r"C:\Users\Ethen\Desktop\6+3 100\allLogs.txt"
+    outFile = r"C:\Users\USTC\Desktop\6+3 100\hadoop-hadoop-namenode-node1.out"
+    logFile = r"C:\Users\USTC\Desktop\6+3 100\allLogs.txt"
 
     # outFile = r"C:\Users\Ethen\Desktop\6+3 100\Corrput\06222300\hadoop-hadoop-namenode-node1.out"
     # logFile = r"C:\Users\Ethen\Desktop\6+3 100\Corrput\06222300\allLogs.txt"
@@ -247,3 +258,4 @@ if __name__=="__main__":
     verifyComputeTargets(outFile)
     verifyDestMapper(outFile, 18)
     getTasksSizeBeforeTimeout(logFile)
+    getComputeTime(outFile)

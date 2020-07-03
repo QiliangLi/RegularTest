@@ -6,14 +6,14 @@ def calFileSize(k, m, blockSize, nodeNum, gains):
     stripeNum=math.ceil((nodeNum-1) * gains * nodeNum/(k+m))
     fileSize=stripeNum * k * blockSize
 
-    print("K=",k," ,M=",m," ,blockSize=",blockSize," ,nodeNum=",nodeNum," ,gains=",gains," ,stripeNum=",stripeNum," ,fileSize=",fileSize,"MB")
+    print("K=",k," ,M=",m," ,blockSize=",blockSize," ,nodeNum=",nodeNum," ,gains=",gains," ,stripeNum=",stripeNum," ,fileSize=",fileSize,"MB", "(", fileSize/1024,"G)", " ,reconSize=", fileSize/1024/nodeNum, "G)")
     return stripeNum,fileSize
 
 
 if __name__=="__main__":
     erasureCodingPolicy=[(3,2), (6,3), (10,4)]
-    times=[30]
-    blockSize=32
+    times=[100]
+    blockSize=16
     nodeNums=[18]
 
     for ecp in erasureCodingPolicy:

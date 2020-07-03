@@ -67,8 +67,8 @@ def getTimestampDiff(timedic):
 
 
 if __name__=="__main__":
-    logFile=r"C:\Users\Ethen\Desktop\6+3 100\allLogs.txt"
-    # logFile=r"C:\Users\Ethen\Desktop\6+3 100\SlectiveEC\06231900\allLogs.txt"
+    logFile=r"C:\Users\USTC\Desktop\6+3 100\allLogs.txt"
+    # logFile=r"C:\Users\USTC\Desktop\6+3 100\SlectiveEC\07021645-s2\allLogs.txt"
     # logFile=r"C:\Users\Ethen\Desktop\6+3 100\Baseline\06182200\allLogs.txt"
     max=getRecoveryTime(logFile)
     print("Max: ", max, "seconds", max/60, "min")
