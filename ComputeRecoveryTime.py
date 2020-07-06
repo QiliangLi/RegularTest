@@ -2,7 +2,7 @@ import re
 import datetime
 
 
-def getRecoveryTime(logFile):
+def getRecoveryTime(logFile,timeCorrect):
     timedic = {}
     f = open(logFile)  # 返回一个文件对象
     line = f.readline()  # 调用文件的 readline()方法
@@ -30,10 +30,10 @@ def getRecoveryTime(logFile):
 
     print(timedic)
 
-    return getTimestampDiff(timedic)
+    return getTimestampDiff(timedic,timeCorrect)
 
 
-def getTimestampDiff(timedic):
+def getTimestampDiff(timedic,timeCorrect):
     startDateTime=datetime.datetime.strptime(timedic["node1"][0][:-4], '%Y-%m-%d %H:%M:%S')
     startMicroSecond=int(timedic["node1"][0][-3:])
     max=-1
@@ -45,6 +45,11 @@ def getTimestampDiff(timedic):
             endDateTime=datetime.datetime.strptime(ts[:-4], '%Y-%m-%d %H:%M:%S')
             endMicroSecond=int(ts[-3:])
             diff=(endDateTime-startDateTime).seconds
+
+            # 对集群时间进行修正
+            if hostname in timeCorrect:
+                diff+=timeCorrect[hostname]
+
             if diff > 80000:
                 continue
 
@@ -68,9 +73,14 @@ def getTimestampDiff(timedic):
 
 if __name__=="__main__":
     logFile=r"C:\Users\USTC\Desktop\6+3 100\allLogs.txt"
-    # logFile=r"C:\Users\USTC\Desktop\6+3 100\SlectiveEC\07021645-s2\allLogs.txt"
+    # logFile=r"C:\Users\USTC\Desktop\6+3 100\SlectiveEC\07032056-100\allLogs.txt"
     # logFile=r"C:\Users\Ethen\Desktop\6+3 100\Baseline\06182200\allLogs.txt"
-    max=getRecoveryTime(logFile)
+
+    # 由于集群时间不同步，因此加入对时间的修正
+    timeCorrect={}
+    # timeCorrect["node3"]=46
+
+    max=getRecoveryTime(logFile,timeCorrect)
     print("Max: ", max, "seconds", max/60, "min")
 
 

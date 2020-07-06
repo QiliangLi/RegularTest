@@ -3,24 +3,42 @@ import csv
 
 
 hostname2IP={}
-hostname2IP["node2"]="192.168.1.12"
-hostname2IP["node3"]="192.168.1.13"
-hostname2IP["node4"]="192.168.1.14"
-hostname2IP["node5"]="192.168.1.15"
-hostname2IP["node6"]="192.168.1.16"
-hostname2IP["node7"]="192.168.1.17"
-hostname2IP["node8"]="192.168.1.18"
-hostname2IP["node9"]="192.168.1.19"
-hostname2IP["node10"]="192.168.1.20"
-hostname2IP["node11"]="192.168.1.21"
-hostname2IP["node12"]="192.168.1.22"
-hostname2IP["node13"]="192.168.1.23"
-hostname2IP["node14"]="192.168.1.24"
-hostname2IP["node15"]="192.168.1.25"
-hostname2IP["node16"]="192.168.1.26"
-hostname2IP["node17"]="192.168.1.27"
-hostname2IP["node18"]="192.168.1.28"
-hostname2IP["node19"]="192.168.1.29"
+# hostname2IP["node2"]="192.168.1.12"
+# hostname2IP["node3"]="192.168.1.13"
+# hostname2IP["node4"]="192.168.1.14"
+# hostname2IP["node5"]="192.168.1.15"
+# hostname2IP["node6"]="192.168.1.16"
+# hostname2IP["node7"]="192.168.1.17"
+# hostname2IP["node8"]="192.168.1.18"
+# hostname2IP["node9"]="192.168.1.19"
+# hostname2IP["node10"]="192.168.1.20"
+# hostname2IP["node11"]="192.168.1.21"
+# hostname2IP["node12"]="192.168.1.22"
+# hostname2IP["node13"]="192.168.1.23"
+# hostname2IP["node14"]="192.168.1.24"
+# hostname2IP["node15"]="192.168.1.25"
+# hostname2IP["node16"]="192.168.1.26"
+# hostname2IP["node17"]="192.168.1.27"
+# hostname2IP["node18"]="192.168.1.28"
+# hostname2IP["node19"]="192.168.1.29"
+
+hostname2IP["node2"]="100.0.0.2"
+hostname2IP["node3"]="100.0.0.3"
+hostname2IP["node4"]="100.0.0.4"
+hostname2IP["node5"]="100.0.0.5"
+hostname2IP["node6"]="100.0.0.6"
+hostname2IP["node7"]="100.0.0.7"
+hostname2IP["node8"]="100.0.0.8"
+hostname2IP["node10"]="100.0.0.9"
+hostname2IP["node11"]="100.0.0.10"
+hostname2IP["node12"]="100.0.0.11"
+hostname2IP["node13"]="100.0.0.12"
+hostname2IP["node14"]="100.0.0.13"
+hostname2IP["node15"]="100.0.0.14"
+hostname2IP["node16"]="100.0.0.15"
+hostname2IP["node17"]="100.0.0.16"
+hostname2IP["node18"]="100.0.0.17"
+hostname2IP["node19"]="100.0.0.18"
 
 
 def verifyNNOut(outFile):
@@ -254,8 +272,8 @@ if __name__=="__main__":
     print("Not enough replicas was chosen:", findStrInFile(logFile, "Not enough replicas was chosen"))
     print("Deleted:", findStrInFile(logFile, "Deleted"))
 
-    verifyRwIndex(outFile, 18)
+    verifyRwIndex(outFile, 17)
     verifyComputeTargets(outFile)
-    verifyDestMapper(outFile, 18)
+    verifyDestMapper(outFile, 17)
     getTasksSizeBeforeTimeout(logFile)
     getComputeTime(outFile)
