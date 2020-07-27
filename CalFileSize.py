@@ -13,10 +13,10 @@ def calFileSize(k, m, blockSize, nodeNum, gains):
 if __name__=="__main__":
     erasureCodingPolicy=[(3,2), (6,3), (10,4)]
     times=[100]
-    blockSize=8
-    nodeNums=[17]
+    blockSize=16
+    DNNums=[17]
 
     for ecp in erasureCodingPolicy:
-        for nn in nodeNums:
+        for nn in DNNums:
             for time in times:
                 calFileSize(ecp[0], ecp[1], blockSize, nn, time)

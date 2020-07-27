@@ -34,14 +34,14 @@ def getBlockLocations(fsckFile,k,m,ipPatten):
 
 
 if __name__=="__main__":
-    # before = r"C:\Users\Ethen\Desktop\6+3 100\Baseline\06241900-30\1.txt"
-    # after = r"C:\Users\Ethen\Desktop\6+3 100\Baseline\06241900-30\2.txt"
+    # before = r"C:\Users\USTC\Desktop\6+3 100\Baseline\07061900-100-w-sw\1.txt"
+    # after = r"C:\Users\USTC\Desktop\6+3 100\Baseline\07061900-100-w-sw\2.txt"
 
     before=r"C:\Users\USTC\Desktop\6+3 100\1.txt"
     after = r"C:\Users\USTC\Desktop\6+3 100\2.txt"
 
-    # before = r"C:\Users\Ethen\Desktop\6+3 100\SlectiveEC\06241730-30\1.txt"
-    # after = r"C:\Users\Ethen\Desktop\6+3 100\SlectiveEC\06241730-30\2.txt"
+    # before = r"C:\Users\USTC\Desktop\6+3 100\SlectiveEC\07071123-100-16-ns-3\1.txt"
+    # after = r"C:\Users\USTC\Desktop\6+3 100\SlectiveEC\07071123-100-16-ns-3\2.txt"
 
     # dic1 = getBlockLocations(before, 6, 3, ipPatten="192.168.1.")
     # dic2 = getBlockLocations(after, 6, 3, ipPatten="192.168.1.")

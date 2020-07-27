@@ -258,14 +258,14 @@ if __name__=="__main__":
     outFile = r"C:\Users\USTC\Desktop\6+3 100\hadoop-hadoop-namenode-node1.out"
     logFile = r"C:\Users\USTC\Desktop\6+3 100\allLogs.txt"
 
-    # outFile = r"C:\Users\Ethen\Desktop\6+3 100\Corrput\06222300\hadoop-hadoop-namenode-node1.out"
-    # logFile = r"C:\Users\Ethen\Desktop\6+3 100\Corrput\06222300\allLogs.txt"
+    # outFile = r"C:\Users\USTC\Desktop\6+3 100\Baseline\07061900-100-w-sw\hadoop-hadoop-namenode-node1.out"
+    # logFile = r"C:\Users\USTC\Desktop\6+3 100\Baseline\07061900-100-w-sw\allLogs.txt"
 
     verifyNNOut(outFile)
     verifyLogs(logFile)
 
     print("crgMaxflow:", findStrInFile(outFile, "crgMaxflow:"))
-    print("full crgMaxflow:", findStrInFile(outFile, "crgMaxflow: 17"))
+    print("full crgMaxflow:", findStrInFile(outFile, "crgMaxflow: 16"))
     print("rw.Targets:", findStrInFile(outFile, "rw.Targets:"))
     print("LQL-BLOCK*", findStrInFile(logFile, "LQL-BLOCK*"))
     print("Failed to place enough replicas:", findStrInFile(logFile, "Failed to place enough replicas"))
