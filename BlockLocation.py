@@ -46,20 +46,20 @@ if __name__=="__main__":
     # dic1 = getBlockLocations(before, 6, 3, ipPatten="192.168.1.")
     # dic2 = getBlockLocations(after, 6, 3, ipPatten="192.168.1.")
 
-    dic1 = getBlockLocations(before, 6, 3, ipPatten = "100.0.0.")
-    # dic2 = getBlockLocations(after, 6, 3, ipPatten = "100.0.0.")
-    # diffList = []
-    # for key in dic2:
-    #     diffList.append(dic2[key] - dic1[key])
-    #     print(key, " ", dic1[key], " ", dic2[key], " ", dic2[key] - dic1[key])
-    #
-    # # 求均值
-    # arr_mean = np.mean(diffList)
-    # # 求方差
-    # arr_var = np.var(diffList)
-    # # 求标准差
-    # arr_std = np.std(diffList, ddof=1)
-    # print("平均值为：%f" % arr_mean)
-    # print("方差为：%f" % arr_var)
-    # print("标准差为:%f" % arr_std)
+    dic1 = getBlockLocations(before, 3, 2, ipPatten = "100.0.0.")
+    dic2 = getBlockLocations(after, 3, 2, ipPatten = "100.0.0.")
+    diffList = []
+    for key in dic2:
+        diffList.append(dic2[key] - dic1[key])
+        print(key, " ", dic1[key], " ", dic2[key], " ", dic2[key] - dic1[key])
+
+    # 求均值
+    arr_mean = np.mean(diffList)
+    # 求方差
+    arr_var = np.var(diffList)
+    # 求标准差
+    arr_std = np.std(diffList, ddof=1)
+    print("平均值为：%f" % arr_mean)
+    print("方差为：%f" % arr_var)
+    print("标准差为:%f" % arr_std)
 
