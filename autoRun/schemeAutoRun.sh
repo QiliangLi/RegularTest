@@ -13,22 +13,24 @@ for i in 1
 do
 echo ${i}
 stop-all.sh
-~/backToOrigin.sh
-~/putFile.sh $2 $3 $4
-sleep 5m
-~/getFilesLocations.sh $2 $3 $4
+#for j in {1..19};do ssh hadoop@n$j "hostname;sudo tc qdisc del dev ens9 root";done
+sh ~/backToOrigin.sh
+sh ~/putFile.sh 17072 6 3
+sleep 25m
+sh ~/getFilesLocations.sh 17072 6 3
 mkdir $1-LQL${i}
-mv allLocationsFile$2M.txt 1.txt
+mv allLocationsFile17072M.txt 1.txt
 mv 1.txt $1-LQL${i}/
 stop-all.sh
-~/restart.sh
+#for j in {1..19};do ssh hadoop@n$j "hostname;sudo tc qdisc add dev ens9 root tbf rate 240Mbit latency 50ms burst 15kb";done
+sh ~/restart.sh
 start-dfs.sh
 ssh hadoop@n5 "hdfs --daemon stop datanode"
-sleep 1000s
-~/getFilesLocations.sh $2 $3 $4
-mv allLocationsFile$2M.txt 2.txt
+sleep 22m
+sh ~/getFilesLocations.sh 17072 6 3
+mv allLocationsFile17072M.txt 2.txt
 mv 2.txt $1-LQL${i}/
-~/collectLog.sh
+sh ~/collectLog.sh
 mv allLogs.txt $1-LQL${i}/
 cp ~/echadoop/hadoop-3.1.2/logs/hadoop-hadoop-namenode-node1.out ~/$1-LQL${i}/hadoop-hadoop-namenode-node1.out
 done

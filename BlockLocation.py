@@ -5,6 +5,7 @@ import numpy as np
 
 def getBlockLocations(fsckFile,k,m,ipPatten):
     dic = {}
+    deadList=[]
     f = open(fsckFile)  # 返回一个文件对象
     line = f.readline()  # 调用文件的 readline()方法
     while line:
@@ -24,21 +25,22 @@ def getBlockLocations(fsckFile,k,m,ipPatten):
     for i in range(1, 19):
         if (ipPatten + str(i)) not in dic:
             print(ipPatten + str(i))
+            deadList.append(ipPatten + str(i))
 
     all = 0
     for key in dic:
         all += dic[key]
 
     print(all)
-    return dic
+    return dic,deadList
 
 
-if __name__=="__main__":
+def main(blockLocationBefore, blockLocationAfter, ec_k, ec_m):
     # before = r"C:\Users\USTC\Desktop\6+3 100\Baseline\07061900-100-w-sw\1.txt"
     # after = r"C:\Users\USTC\Desktop\6+3 100\Baseline\07061900-100-w-sw\2.txt"
 
-    before=r"C:\Users\USTC\Desktop\6+3 100\1.txt"
-    after = r"C:\Users\USTC\Desktop\6+3 100\2.txt"
+    before=blockLocationBefore
+    after = blockLocationAfter
 
     # before = r"C:\Users\USTC\Desktop\6+3 100\SlectiveEC\07071123-100-16-ns-3\1.txt"
     # after = r"C:\Users\USTC\Desktop\6+3 100\SlectiveEC\07071123-100-16-ns-3\2.txt"
@@ -46,8 +48,14 @@ if __name__=="__main__":
     # dic1 = getBlockLocations(before, 6, 3, ipPatten="192.168.1.")
     # dic2 = getBlockLocations(after, 6, 3, ipPatten="192.168.1.")
 
-    dic1 = getBlockLocations(before, 3, 2, ipPatten = "100.0.0.")
-    dic2 = getBlockLocations(after, 3, 2, ipPatten = "100.0.0.")
+    dic1, deadList1 = getBlockLocations(before, ec_k, ec_m, ipPatten = "100.0.0.")
+    dic2, deadList2 = getBlockLocations(after, ec_k, ec_m, ipPatten = "100.0.0.")
+
+    deadNode=list(set(deadList2).difference(set(deadList1)))
+    print("Dead node:")
+    for dn in deadNode:
+        print(dn, dic1[dn])
+
     diffList = []
     for key in dic2:
         diffList.append(dic2[key] - dic1[key])

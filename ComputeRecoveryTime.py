@@ -74,8 +74,8 @@ def getTimestampDiff(timedic,timeCorrect):
     return max
 
 
-if __name__=="__main__":
-    logFile=r"C:\Users\USTC\Desktop\6+3 100\allLogs.txt"
+def main(logPath):
+    logFile=logPath
     # logFile=r"C:\Users\USTC\Desktop\6+3 100\SlectiveEC\07032056-100\allLogs.txt"
     # logFile=r"C:\Users\Ethen\Desktop\6+3 100\Baseline\06182200\allLogs.txt"
 

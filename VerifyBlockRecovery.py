@@ -248,15 +248,18 @@ def getComputeTime(file):
         if "Compute time: " in line or "Compute time include sleep: " in line:
             print(line)
 
+        if "pprComputeTime" in line or "carComputeTime" in line:
+            print(line)
+
         line = f.readline()
 
 
-if __name__=="__main__":
+def main(logPath, outPath, dnNum):
     # outFile=r"C:\Users\Ethen\Desktop\NotIntegerBatch\logs\hadoop-hadoop-namenode-node1.out"
     # logFile=r"C:\Users\Ethen\Desktop\NotIntegerBatch\allLogs.txt"
 
-    outFile = r"C:\Users\USTC\Desktop\6+3 100\hadoop-hadoop-namenode-node1.out"
-    logFile = r"C:\Users\USTC\Desktop\6+3 100\allLogs.txt"
+    outFile = outPath
+    logFile = logPath
 
     # outFile = r"C:\Users\USTC\Desktop\6+3 100\Baseline\07061900-100-w-sw\hadoop-hadoop-namenode-node1.out"
     # logFile = r"C:\Users\USTC\Desktop\6+3 100\Baseline\07061900-100-w-sw\allLogs.txt"
@@ -272,8 +275,8 @@ if __name__=="__main__":
     print("Not enough replicas was chosen:", findStrInFile(logFile, "Not enough replicas was chosen"))
     print("Deleted:", findStrInFile(logFile, "Deleted"))
 
-    verifyRwIndex(outFile, 17)
+    verifyRwIndex(outFile, dnNum)
     verifyComputeTargets(outFile)
-    verifyDestMapper(outFile, 17)
+    verifyDestMapper(outFile, dnNum)
     getTasksSizeBeforeTimeout(logFile)
     getComputeTime(outFile)

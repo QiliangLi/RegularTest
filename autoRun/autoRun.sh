@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#~/schemeAutoRun.sh DEFAULT1 18288 10 4
-#~/schemeAutoRun.sh DEFAULT2 18288 10 4
-~/schemeAutoRun.sh SLECTIVEEC 15360 3 2
-~/schemeAutoRun.sh CAR 15360 3 2
-~/schemeAutoRun.sh PPR 15360 3 2
+~/schemeAutoRun.sh DEFAULT1 17072 6 3
+#~/schemeAutoRun.sh DEFAULT2 17072 6 3
+~/schemeAutoRun.sh SLECTIVEEC 17072 6 3
+~/schemeAutoRun.sh CAR 17072 6 3
+#~/schemeAutoRun.sh PPR 17072 6 3
