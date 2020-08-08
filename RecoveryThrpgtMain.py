@@ -4,8 +4,8 @@ import VerifyBlockRecovery
 import os
 
 if __name__=="__main__":
-    ec_k = 3
-    ec_m = 2
+    ec_k = 6
+    ec_m = 3
     dnNum=17
     blockLocationBefore=r"C:\Users\USTC\Desktop\6+3 100\1.txt"
     blockLocationAfter= r"C:\Users\USTC\Desktop\6+3 100\2.txt"
