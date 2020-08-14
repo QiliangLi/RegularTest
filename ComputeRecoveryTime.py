@@ -7,7 +7,8 @@ def getRecoveryTime(logFile,timeCorrect):
     f = open(logFile)  # 返回一个文件对象
     line = f.readline()  # 调用文件的 readline()方法
     hostname="null"
-    startFlag = "org.apache.hadoop.net.NetworkTopology: Removing a node"
+    # startFlag = "org.apache.hadoop.net.NetworkTopology: Removing a node"
+    startFlag = "LQL Start reconstruction!"
     endFlag="org.apache.hadoop.hdfs.server.datanode.DataNode: Received"
     while line:
         if len(line)<=10 and "node" in line:
