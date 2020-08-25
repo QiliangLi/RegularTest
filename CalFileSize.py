@@ -16,7 +16,7 @@ def calFileSize(k, m, blockSize, nodeNum, gains, distributeNum):
 if __name__=="__main__":
     erasureCodingPolicy=[(3,2), (6,3), (10,4)]
     times=[100]
-    blockSize=16
+    blockSize=32
     distributeNum=17
     DNNums=[17]
 

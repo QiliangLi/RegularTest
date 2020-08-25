@@ -280,3 +280,5 @@ def main(logPath, outPath, dnNum):
     verifyDestMapper(outFile, dnNum)
     getTasksSizeBeforeTimeout(logFile)
     getComputeTime(outFile)
+
+    print("datanode.DataNode: Received", findStrInFile(logFile, "datanode.DataNode: Received"))
