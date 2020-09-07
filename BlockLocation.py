@@ -53,8 +53,11 @@ def main(blockLocationBefore, blockLocationAfter, ec_k, ec_m):
 
     deadNode=list(set(deadList2).difference(set(deadList1)))
     print("Dead node:")
+    reconBlkSum=0
     for dn in deadNode:
+        reconBlkSum+=dic1[dn]
         print(dn, dic1[dn])
+    print("reconBlkSum: ",reconBlkSum)
 
     diffList = []
     for key in dic2:

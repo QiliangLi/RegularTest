@@ -114,6 +114,7 @@ def verifyLogs(logFile):
             cpRw.append(re.search(r"blk_-\d{19}_\d{4}", line).group(0))
 
         if "INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Received BP" in line:
+            # print(line)
             finishRw.append(re.search(r"blk_-\d{19}_\d{4}", line).group(0))
 
         if "java.io.IOException: Transfer failed for all targets" in line:
@@ -277,7 +278,7 @@ def main(logPath, outPath, dnNum):
 
     verifyRwIndex(outFile, dnNum)
     verifyComputeTargets(outFile)
-    verifyDestMapper(outFile, dnNum)
+    # verifyDestMapper(outFile, dnNum)
     getTasksSizeBeforeTimeout(logFile)
     getComputeTime(outFile)
 
