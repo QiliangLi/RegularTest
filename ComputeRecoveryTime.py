@@ -37,8 +37,8 @@ def getRecoveryTime(logFile,timeCorrect):
 def getTimestampDiff(timedic,timeCorrect):
     startDateTime=datetime.datetime.strptime(timedic["node1"][0][:-4], '%Y-%m-%d %H:%M:%S')
     startMicroSecond=int(timedic["node1"][0][-3:])
-    # startDateTime=datetime.datetime.strptime("2020-07-30 20:45:29", '%Y-%m-%d %H:%M:%S')
-    # startMicroSecond=421
+    # startDateTime=datetime.datetime.strptime("2020-09-18 16:11:35", '%Y-%m-%d %H:%M:%S')
+    # startMicroSecond=334
 
     max=-1
     mhostname=""
@@ -57,10 +57,10 @@ def getTimestampDiff(timedic,timeCorrect):
             if diff > 80000:
                 continue
 
-            if startMicroSecond>=endMicroSecond:
-                diff+=(startMicroSecond-endMicroSecond)/1000
+            if endMicroSecond>=startMicroSecond:
+                diff+=(endMicroSecond-startMicroSecond)/1000
             else:
-                diff+=(startMicroSecond-endMicroSecond+1000)/1000-1
+                diff+=(endMicroSecond-startMicroSecond+1000)/1000-1
 
             if diff>max:
                 max=diff

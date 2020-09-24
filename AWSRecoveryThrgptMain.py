@@ -1,4 +1,4 @@
-import BlockLocation
+import AWSBlockLocation
 import ComputeRecoveryTime
 import VerifyBlockRecovery
 import EveryBatchRecoveryTime
@@ -13,7 +13,7 @@ if __name__=="__main__":
     logPath=r"C:\Users\USTC\Desktop\6+3 100\allLogs.txt"
     outPath=r"C:\Users\USTC\Desktop\6+3 100\hadoop-hadoop-namenode-node1.out"
 
-    BlockLocation.main(blockLocationBefore, blockLocationAfter, ec_k, ec_m)
+    AWSBlockLocation.main(blockLocationBefore, blockLocationAfter, ec_k, ec_m)
     os.system("pause")
     input()
     ComputeRecoveryTime.main(logPath)

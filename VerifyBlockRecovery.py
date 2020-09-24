@@ -274,12 +274,17 @@ def main(logPath, outPath, dnNum):
     print("LQL-BLOCK*", findStrInFile(logFile, "LQL-BLOCK*"))
     print("Failed to place enough replicas:", findStrInFile(logFile, "Failed to place enough replicas"))
     print("Not enough replicas was chosen:", findStrInFile(logFile, "Not enough replicas was chosen"))
-    print("Deleted:", findStrInFile(logFile, "Deleted"))
+
+    deletedCounter=findStrInFile(logFile, "Deleted")
+    print("Deleted:", deletedCounter)
 
     verifyRwIndex(outFile, dnNum)
-    verifyComputeTargets(outFile)
+    # verifyComputeTargets(outFile)
     # verifyDestMapper(outFile, dnNum)
     getTasksSizeBeforeTimeout(logFile)
     getComputeTime(outFile)
 
-    print("datanode.DataNode: Received", findStrInFile(logFile, "datanode.DataNode: Received"))
+    receivedCounter=findStrInFile(logFile, "datanode.DataNode: Received")
+    print("datanode.DataNode: Received", receivedCounter)
+
+    print("Received - Deleted:", receivedCounter-deletedCounter)
