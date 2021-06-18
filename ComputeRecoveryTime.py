@@ -10,6 +10,7 @@ def getRecoveryTime(logFile,timeCorrect):
     startFlag = "org.apache.hadoop.net.NetworkTopology: Removing a node"
     # startFlag = "LQL Start reconstruction!"
     endFlag="org.apache.hadoop.hdfs.server.datanode.DataNode: Received"
+    helpFlag="of size 134217728"
     while line:
         if len(line)<=10 and "node" in line:
             hostname=re.search(r"node\d{1,2}",line).group(0)
@@ -22,7 +23,7 @@ def getRecoveryTime(logFile,timeCorrect):
             timestamp=re.search(r"(\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2},\d{1,3})", line).group(0)
             timedic[hostname].append(timestamp)
 
-        if endFlag in line:
+        if endFlag in line and helpFlag in line:
             print(line)
             timestamp = re.search(r"(\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2},\d{1,3})", line).group(0)
             timedic[hostname].append(timestamp)

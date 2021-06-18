@@ -115,7 +115,8 @@ def verifyLogs(logFile):
 
         if "INFO org.apache.hadoop.hdfs.server.datanode.DataNode: Received BP" in line:
             # print(line)
-            finishRw.append(re.search(r"blk_-\d{19}_\d{4}", line).group(0))
+            if re.search(r"blk_-\d{19}_\d{4}", line) is not None:
+                finishRw.append(re.search(r"blk_-\d{19}_\d{4}", line).group(0))
 
         if "java.io.IOException: Transfer failed for all targets" in line:
             failureDic[hostname]+=1
@@ -284,7 +285,8 @@ def main(logPath, outPath, dnNum):
     getTasksSizeBeforeTimeout(logFile)
     getComputeTime(outFile)
 
-    receivedCounter=findStrInFile(logFile, "datanode.DataNode: Received")
+    # receivedCounter=findStrInFile(logFile, "datanode.DataNode: Received")
+    receivedCounter = findStrInFile(logFile, "of size 134217728")
     print("datanode.DataNode: Received", receivedCounter)
 
     print("Received - Deleted:", receivedCounter-deletedCounter)

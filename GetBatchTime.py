@@ -1,6 +1,4 @@
 import re
-import pandas as pd
-import numpy as np
 import datetime
 import matplotlib.pyplot as plt
 
@@ -135,11 +133,11 @@ def plotZoomInBatchRecoveryNum(logFile, color, label, startBlkIndex, endBlkIndex
 
 
 def setPltZoomIn():
-    font1 = {'family': 'Arial',
+    font1 = {'family': 'Times New Roman',
              'weight': 'normal',
              'size': 15,
              }
-    font2 = {'family': 'Arial',
+    font2 = {'family': 'Times New Roman',
              'weight': 'normal',
              'size': 14,
              }
@@ -151,7 +149,9 @@ def setPltZoomIn():
     plt.legend(loc="lower right", prop=font2)
 
     # 设置坐标刻度字体大小
-    plt.tick_params(labelsize=15)
+    # plt.tick_params(labelsize=15)
+    plt.yticks(fontproperties='Times New Roman', size=15)
+    plt.xticks(fontproperties='Times New Roman', size=15)
 
     # 设置坐标轴的范围
     plt.axis([85, 175, 400, 600])
@@ -162,11 +162,11 @@ def setPltZoomIn():
 
 
 def setPltOrigin():
-    font1 = {'family': 'Arial',
+    font1 = {'family': 'Times New Roman',
              'weight': 'normal',
              'size': 15,
              }
-    font2 = {'family': 'Arial',
+    font2 = {'family': 'Times New Roman',
              'weight': 'normal',
              'size': 14,
              }
@@ -178,7 +178,9 @@ def setPltOrigin():
     plt.legend(loc="lower right", prop=font2)
 
     # 设置坐标刻度字体大小
-    plt.tick_params(labelsize=15)
+    # plt.tick_params(labelsize=15)
+    plt.yticks(fontproperties='Times New Roman', size=15)
+    plt.xticks(fontproperties='Times New Roman', size=15)
 
     # 设置坐标轴的范围
     plt.axis([0, 500, 0, 1610])
@@ -189,18 +191,18 @@ def setPltOrigin():
 
 
 if __name__=="__main__":
-    logFile1=r"C:\Users\USTC\Desktop\6+3 100\allLogs-1.txt"
-    logFile2=r"C:\Users\USTC\Desktop\6+3 100\allLogs-2.txt"
+    logFile1=r"C:\Users\USTC\Desktop\allLogs-1.txt"
+    logFile2=r"C:\Users\USTC\Desktop\allLogs-2.txt"
 
     # 设置长款比例
     fig, ax = plt.subplots(figsize=(8, 5))
-    plotBatchRecoveryNum(logFile1,"r", "HDFS")
-    plotBatchRecoveryNum(logFile2,"b", "SelectiveEC")
-    setPltOrigin()
+    # plotBatchRecoveryNum(logFile1,"grey", "HDFS")
+    # plotBatchRecoveryNum(logFile2,"black", "SelectiveEC")
+    # setPltOrigin()
 
-    # plotZoomInBatchRecoveryNum(logFile1, "r", "HDFS", 400, 600)
-    # plotZoomInBatchRecoveryNum(logFile2, "b", "SelectiveEC", 400, 600)
-    # setPltZoomIn()
+    plotZoomInBatchRecoveryNum(logFile1, "grey", "HDFS", 400, 600)
+    plotZoomInBatchRecoveryNum(logFile2, "black", "SelectiveEC", 400, 600)
+    setPltZoomIn()
 
     # x = [[1.1, 2.2], [2, 5]]  # 要连接的两个点的坐标
     # y = [[1, 1], [6, 6]]
