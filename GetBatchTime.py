@@ -1,5 +1,6 @@
 import re
 import datetime
+import matplotlib
 import matplotlib.pyplot as plt
 
 
@@ -92,13 +93,15 @@ def plotBatchRecoveryNum(logFile, color, label):
         ed = datetime.datetime.strptime(dnReceivedBlkDic[blkID][:-4], '%Y-%m-%d %H:%M:%S')
         microEd = int(dnReceivedBlkDic[blkID][-3:])
 
+        print(getTimeDiff(startDate, startMicro, sd, microSd), getTimeDiff(startDate, startMicro, ed, microEd))
+
         if i==0:
             plt.plot([getTimeDiff(startDate, startMicro, sd, microSd), getTimeDiff(startDate, startMicro, ed, microEd)], [i,i], color=color, label=label)
         else:
             plt.plot([getTimeDiff(startDate, startMicro, sd, microSd), getTimeDiff(startDate, startMicro, ed, microEd)],
                      [i, i], color=color)
 
-    print(sortedTasks)
+    # print(sortedTasks)
     print(len(sortedTasks))
 
 
@@ -191,18 +194,21 @@ def setPltOrigin():
 
 
 if __name__=="__main__":
-    logFile1=r"C:\Users\USTC\Desktop\allLogs-1.txt"
-    logFile2=r"C:\Users\USTC\Desktop\allLogs-2.txt"
+    matplotlib.rcParams['pdf.fonttype'] = 42
+    matplotlib.rcParams['ps.fonttype'] = 42
+
+    logFile1=r"E:\SelectiveEC材料\6+3 100\allLogs-1.txt"
+    logFile2=r"E:\SelectiveEC材料\6+3 100\allLogs-2.txt"
 
     # 设置长款比例
     fig, ax = plt.subplots(figsize=(8, 5))
-    # plotBatchRecoveryNum(logFile1,"grey", "HDFS")
-    # plotBatchRecoveryNum(logFile2,"black", "SelectiveEC")
-    # setPltOrigin()
+    plotBatchRecoveryNum(logFile1,"grey", "HDFS")
+    plotBatchRecoveryNum(logFile2,"black", "SelectiveEC")
+    setPltOrigin()
 
-    plotZoomInBatchRecoveryNum(logFile1, "grey", "HDFS", 400, 600)
-    plotZoomInBatchRecoveryNum(logFile2, "black", "SelectiveEC", 400, 600)
-    setPltZoomIn()
+    # plotZoomInBatchRecoveryNum(logFile1, "grey", "HDFS", 400, 600)
+    # plotZoomInBatchRecoveryNum(logFile2, "black", "SelectiveEC", 400, 600)
+    # setPltZoomIn()
 
     # x = [[1.1, 2.2], [2, 5]]  # 要连接的两个点的坐标
     # y = [[1, 1], [6, 6]]

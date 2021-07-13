@@ -24,6 +24,7 @@ def getRecoveryTime(logFile,timeCorrect):
             timedic[hostname].append(timestamp)
 
         if endFlag in line and helpFlag in line:
+        # if endFlag in line:
             print(line)
             timestamp = re.search(r"(\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2},\d{1,3})", line).group(0)
             timedic[hostname].append(timestamp)
